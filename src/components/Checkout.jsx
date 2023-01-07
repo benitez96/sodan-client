@@ -2,10 +2,20 @@ import { useSelector } from "react-redux"
 import CartItem from "./CartItem"
 
 import logo from '../assets/logo.jpeg'
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 export const Checkout = () => {
 
 	const { cart } = useSelector(state => state)
+
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!cart.items.length) {
+			navigate('/')
+		}
+	}, [cart])
 
 	return (
 		<section>

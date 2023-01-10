@@ -3,13 +3,16 @@ import CartItem from "./CartItem"
 
 import logo from '../assets/logo.jpeg'
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect } from "react"
-import { Field, Formik } from "formik"
+import { useEffect, useState } from "react"
+import { Field, Formik, replace } from "formik"
 import * as Yup from 'yup';
+import axios from "axios"
+import DotsLoader from "./DotsLoader"
 
 export const Checkout = () => {
 
 	const { cart } = useSelector(state => state)
+	const [loading, setLoading] = useState(false)
 
 	const navigate = useNavigate()
 
@@ -21,7 +24,8 @@ export const Checkout = () => {
 
 
 	const shippingForm = {
-		cart,
+		items: cart.items.map(i => ({ ...i, product_name: i.name, product: i.id })),
+		total_amount: cart.total,
 		name: '',
 		lastname: '',
 		dni: '',
@@ -49,7 +53,14 @@ export const Checkout = () => {
 	})
 
 	const handleSubmit = (values) => {
-		console.log(values)
+		setLoading(true)
+		axios.post(`${import.meta.env.VITE_SERVER_URL}/api/v1/orders/`, values)
+			.then(res => {
+				localStorage.removeItem('cart')
+				setLoading(false)
+				window.location.replace(res.data)
+			})
+			.catch(console.error)
 	}
 
 
@@ -283,7 +294,9 @@ export const Checkout = () => {
 												className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg"
 												type="submit"
 											>
-												Pagar
+												{
+													loading ? <DotsLoader /> : 'Pagar'
+												}
 											</button>
 										</div>
 

@@ -8,7 +8,7 @@ export const ProductCard = ({ product }) => {
 	return (
 		<Link to={`products/${product.slug}`} >
 			<img
-				src={`http://localhost:8000${product.main_image}`}
+				src={`${import.meta.env.VITE_IMAGES_SERVER_URL}${product.main_image}`}
 				alt={product.name}
 				className="object-cover w-full rounded aspect-square"
 			/>

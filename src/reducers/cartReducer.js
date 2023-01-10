@@ -4,12 +4,18 @@ const SHIPPING_OFFER = 10_000
 const SHIPPING_PRICE = 850
 
 
-const initialState = {
+let initialState = {
 	items: [],
 	shipping: SHIPPING_PRICE,
 	total: 0,
 	is_open: false
 }
+
+const stored_cart = localStorage.getItem('cart')
+if (!!stored_cart) {
+	initialState = JSON.parse(stored_cart)
+}
+
 
 
 let total_products = 0
@@ -32,6 +38,15 @@ export const cartReducer = (state = initialState, action) => {
 			total_products = [...state.items, action.payload].reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
 			shipping = total_products > SHIPPING_OFFER ? 0 : SHIPPING_PRICE
 
+			localStorage.setItem('cart', JSON.stringify(
+				{
+					...state,
+					items: in_cart ? [...state.items] : [...state.items, action.payload],
+					shipping,
+					total: total_products + shipping,
+				}
+			))
+
 			return {
 				...state,
 				items: in_cart ? [...state.items] : [...state.items, action.payload],
@@ -46,6 +61,16 @@ export const cartReducer = (state = initialState, action) => {
 				.reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
 
 			shipping = total_products > SHIPPING_OFFER ? 0 : SHIPPING_PRICE
+
+
+			localStorage.setItem('cart', JSON.stringify(
+				{
+					...state,
+					items: state.items.filter(p => p.internal_id !== action.payload.internal_id),
+					shipping,
+					total: total_products + shipping,
+				}
+			))
 
 			return {
 				...state,
@@ -73,6 +98,16 @@ export const cartReducer = (state = initialState, action) => {
 
 			shipping = total_products > SHIPPING_OFFER ? 0 : SHIPPING_PRICE
 
+			localStorage.setItem('cart', JSON.stringify(
+				{
+					...state,
+					items,
+					shipping,
+					total: total_products + shipping,
+				}
+			))
+
+
 			return {
 				...state,
 				items,
@@ -80,6 +115,15 @@ export const cartReducer = (state = initialState, action) => {
 				total: total_products + shipping,
 			}
 
+
+		case cart_types.clean:
+			localStorage.removeItem('cart')
+			return {
+				items: [],
+				shipping: SHIPPING_PRICE,
+				total: 0,
+				is_open: false
+			}
 
 
 		default:

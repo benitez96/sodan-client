@@ -17,18 +17,18 @@ export const ProductDetail = () => {
 	}
 
 	const handleAddToCart = () => {
-		
+
 		const prod = {
 			...product,
 			size,
-			quantity:1
+			quantity: 1
 		}
 
 		dispatch(add_to_cart(prod))
-		
+
 	}
 
-	const { active: product } = useSelector( state => state.products )
+	const { active: product } = useSelector(state => state.products)
 
 	useEffect(() => {
 		dispatch(get_product_by_slug(slug))
@@ -36,15 +36,15 @@ export const ProductDetail = () => {
 	}, [dispatch, slug])
 
 	useEffect(() => {
-		if (product?.sizes){
+		if (product?.sizes) {
 			setSize(Object.entries(product.sizes).filter(([_, v]) => !!v)[0][0])
 		}
 	}, [product])
 
 
-	if ( !product )
+	if (!product)
 		return <p>loading..</p>
-	
+
 
 	return (
 		<section>
@@ -54,21 +54,21 @@ export const ProductDetail = () => {
 						<div className="relative mt-4">
 							<img
 								alt={product.name}
-								src={`http://localhost:8000/${product.images[0]}`}
+								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[0]}`}
 								className="h-72 w-full rounded-xl object-contain lg:h-[540px]"
 							/>
 						</div>
 
 						<ul className="mt-1 flex gap-1">
 							{
-								product.images.map(( image, i ) =>
-									i !== 0 
+								product.images.map((image, i) =>
+									i !== 0
 									&&
 									<li>
 										<img
 											key={image}
 											alt={product.name}
-											src={`http://localhost:8000/${image}`}
+											src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${image}`}
 											className="h-16 w-16 rounded-md object-cover"
 										/>
 									</li>
@@ -80,29 +80,29 @@ export const ProductDetail = () => {
 					<div className="self-center">
 						<h1 className="font-light text-4xl">{product.name}</h1>
 						<div className="space-y-4 lg:pt-8">
-								{
+							{
 								!!product.sizes
-									&&
-									(
-										<div>
-											<legend className="text-md font-light">Talles</legend>
-											<div className="mt-2 flex gap-2">
-												{
-													Object.entries(product.sizes).filter(s => !!s[1]).map(([k, v]) =>
-														<button
-															key={k}
-															className={`uppercase text-sm p-1 ${size == k ? 'bg-teal-600' : ''} px-3 rounded-md border text-gray-700 border-gray-400`}
-															disabled={!v}
-															onClick={() => handleChangeSize(k)}
-														>
-															{k}
-														</button>
-													)
-												}
-											</div>
+								&&
+								(
+									<div>
+										<legend className="text-md font-light">Talles</legend>
+										<div className="mt-2 flex gap-2">
+											{
+												Object.entries(product.sizes).filter(s => !!s[1]).map(([k, v]) =>
+													<button
+														key={k}
+														className={`uppercase text-sm p-1 ${size == k ? 'bg-teal-600' : ''} px-3 rounded-md border text-gray-700 border-gray-400`}
+														disabled={!v}
+														onClick={() => handleChangeSize(k)}
+													>
+														{k}
+													</button>
+												)
+											}
 										</div>
-									)
-								}
+									</div>
+								)
+							}
 							<div>
 								<p className="text-2xl">${product.price}</p>
 							</div>

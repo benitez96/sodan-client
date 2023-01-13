@@ -12,6 +12,8 @@ export const ProductDetail = () => {
 	const dispatch = useDispatch()
 
 	const [size, setSize] = useState()
+	const [displayImage, setDisplayImage] = useState(0)
+
 
 	const handleChangeSize = (size) => {
 		setSize(size)
@@ -58,27 +60,29 @@ export const ProductDetail = () => {
 						<div className="relative mt-4">
 							<img
 								alt={product.name}
-								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[0]}`}
+								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
 								className="h-72 w-full rounded-xl object-contain lg:h-[540px]"
 							/>
 						</div>
 
-						<ul className="mt-1 flex gap-1">
-							{
-								product.images.map((image, i) =>
-									i !== 0
-									&&
-									<li>
-										<img
-											key={image}
-											alt={product.name}
-											src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${image}`}
-											className="h-16 w-16 rounded-md object-cover"
-										/>
-									</li>
-								)
-							}
-						</ul>
+						{
+							product.images.length > 1
+							&&
+							<ul className="mt-1 flex gap-1">
+								{
+									product.images.map((image, i) =>
+										<li key={image}>
+											<img
+												alt={product.name}
+												src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${image}`}
+												className="h-16 w-16 rounded-md object-cover border border-gray-300 cursor-pointer"
+												onClick={() => setDisplayImage(i)}
+											/>
+										</li>
+									)
+								}
+							</ul>
+						}
 					</div>
 
 					<div className="self-center">

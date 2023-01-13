@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { add_to_cart } from "../actions/cart"
 import { get_product_by_slug } from "../actions/products"
+import { NotFound } from "./NotFound"
 
 export const ProductDetail = () => {
 
@@ -43,7 +44,10 @@ export const ProductDetail = () => {
 
 
 	if (!product)
-		return <p>loading..</p>
+		return <p>Loading...</p>
+
+	if (product == 'not found')
+		return <NotFound />
 
 
 	return (

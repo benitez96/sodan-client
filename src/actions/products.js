@@ -15,7 +15,8 @@ export const load_products = () => {
 export const get_product_by_slug = (slug) => {
 
 	return async (dispatch) => {
-		const product = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/${slug}`).then(res => res.data)
+		const product = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/v1/products/${slug}`).then(res => res.data).catch(res => 'not found')
+		console.log(product)
 		dispatch({ type: product_types.load_active, payload: product })
 
 	}

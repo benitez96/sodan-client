@@ -13,6 +13,7 @@ export const Checkout = () => {
 
 	const { cart } = useSelector(state => state)
 	const [loading, setLoading] = useState(false)
+	const [error, setError] = useState(false)
 
 	const navigate = useNavigate()
 
@@ -60,7 +61,10 @@ export const Checkout = () => {
 				setLoading(false)
 				window.location.replace(res.data)
 			})
-			.catch(console.error)
+			.catch(_ => {
+				setError(true)
+				setLoading(false)
+			})
 	}
 
 
@@ -298,6 +302,9 @@ export const Checkout = () => {
 													loading ? <DotsLoader /> : 'Pagar'
 												}
 											</button>
+											{
+												error && <div className="text-red-700 text-center">Ha ocurrido un error. Por favor, intente mas tarde.</div>
+											}
 										</div>
 
 									</form>

@@ -117,7 +117,7 @@ export const ProductDetail = () => {
 
 							<button
 								onClick={handleAddToCart}
-								className="w-full rounded bg-purple-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
+								className="w-full rounded bg-pink-500 hover:bg-pink-400 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white"
 							>
 								Agregar al carrito
 							</button>

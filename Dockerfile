@@ -1,14 +1,18 @@
-# ==== CONFIGURE =====
-# Use a Node 16 base image
-FROM node:16-alpine as development
-ENV NODE_ENV development
-# Set the working directory to /app inside the container
+FROM node:14
+
+# Crear un directorio para la aplicación
+RUN mkdir -p /app
 WORKDIR /app
-# Copy app files
-COPY . .
-# Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
-RUN yarn install
 
-EXPOSE 3000
+# Copiar los archivos necesarios para construir la aplicación
+COPY package.json /app/
+COPY yarn.lock /app/
 
-CMD ["yarn", "dev"]
+# Instalar las dependencias
+RUN yarn
+
+# Copiar el código fuente de la aplicación
+COPY . /app
+
+# Establecer el comando para iniciar la aplicación en modo de desarrollo
+CMD ["yarn", "dev", "--port", "3000", "--host"]

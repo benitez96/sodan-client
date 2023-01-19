@@ -1,7 +1,7 @@
 import { cart_types } from "../types/types";
 
-const SHIPPING_OFFER = 10_000
-const SHIPPING_PRICE = 850
+const SHIPPING_OFFER = import.meta.env.VITE_SHIPPING_OFFER
+const SHIPPING_PRICE = import.meta.env.VITE_SHIPPING_PRICE
 
 
 let initialState = {

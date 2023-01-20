@@ -4,12 +4,12 @@ ENV NODE_ENV production
 WORKDIR /app
 # Cache and Install dependencies
 COPY package.json .
-COPY package-lock.json .
-RUN npm install -g serve
-RUN npm install --production
+COPY yarn.lock .
+RUN yarn global add -g serve
+RUN yarn
 # Copy app files
 COPY . .
 # Build the app
-RUN npm run build
 
+CMD ["yarn", "build"]
 CMD ["npx", "serve", "-s", "build"]

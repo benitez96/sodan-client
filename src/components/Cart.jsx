@@ -59,7 +59,7 @@ export const Cart = () => {
 					className="h-40 flex flex-col justify-evenly"
 				>
 					<button
-						className={`${!items.length ? 'bg-pink-300' : 'bg-pink-500'} hover:bg-pink-400 p-3 mx-5 text-sm font-bold text-white rounded-md text-center`}
+						className={`${!items.length ? 'bg-pink-300' : 'bg-pink-500 hover:bg-pink-400'} p-3 mx-5 text-sm font-bold text-white rounded-md text-center`}
 						disabled={!items.length}
 						onClick={handleCheckout}
 					>

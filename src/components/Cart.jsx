@@ -16,7 +16,7 @@ export const Cart = () => {
 
 	return (
 
-		<aside className={`${is_open ? 'flex' : 'hidden'} items-center justify-end w-full h-screen z-10 fixed top-0`}>
+		<aside className={`${is_open ? 'flex' : 'hidden'} items-center justify-end w-full h-screen max-h-full z-10 fixed top-0`}>
 
 			<div
 				onClick={() => dispatch(toggle_cart())}
@@ -24,7 +24,7 @@ export const Cart = () => {
 			>
 			</div>
 
-			<div className="w-screen h-screen md:w-[28rem] md:h-[98%] bg-white relative md:m-2 md:rounded-md flex flex-col justify-between">
+			<div className="w-screen h-screen max-h-full md:w-[28rem] md:h-[98%] bg-white relative md:m-2 md:rounded-md flex flex-col justify-between">
 				<div className="h-32 border-b-2 border-gray-300 flex items-end">
 					<span
 						className="m-3 text-2xl"

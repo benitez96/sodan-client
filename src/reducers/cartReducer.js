@@ -1,7 +1,7 @@
 import { cart_types } from "../types/types";
 
 const SHIPPING_OFFER = import.meta.env.VITE_SHIPPING_OFFER
-const SHIPPING_PRICE = import.meta.env.VITE_SHIPPING_PRICE
+const SHIPPING_PRICE = Number(import.meta.env.VITE_SHIPPING_PRICE)
 
 
 let initialState = {

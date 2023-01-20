@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { CartButton } from "./CartButton"
-import logo from '../assets/logo.jpeg'
+import logo from '../assets/sodan.svg'
 import { Announcement } from "./Announcement"
 import { useEffect, useState } from 'react';
 

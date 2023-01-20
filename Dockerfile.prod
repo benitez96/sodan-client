@@ -1,15 +1,14 @@
-FROM node:14-alpine AS builder
+FROM node
 ENV NODE_ENV production
 # Add a work directory
 WORKDIR /app
 # Cache and Install dependencies
 COPY package.json .
-COPY yarn.lock .
-RUN yarn global add -g serve
-RUN yarn
+
+RUN npm i -g serve
+RUN npm i
 # Copy app files
 COPY . .
 # Build the app
 
-CMD ["yarn", "build"]
-CMD ["npx", "serve", "-s", "build"]
+CMD ["npm", "run", "build"]

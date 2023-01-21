@@ -1,4 +1,4 @@
-FROM node
+FROM node:19.4
 #ENV NODE_ENV production
 # Add a work directory
 WORKDIR /app
@@ -9,6 +9,6 @@ RUN npm i -g serve
 RUN npm i
 # Copy app files
 COPY . .
-# Build the app
 
-CMD ["npm", "run", "build"]
+# Build the app
+RUN npm run build

@@ -80,6 +80,7 @@ export const cartReducer = (state = initialState, action) => {
 			}
 
 		case cart_types.toggle:
+			localStorage.setItem('cart', JSON.stringify({ ...state, is_open: !state.is_open }))
 			return { ...state, is_open: !state.is_open }
 
 		case cart_types.modify_qty:

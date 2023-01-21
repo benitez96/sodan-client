@@ -38,6 +38,7 @@ export const Checkout = () => {
 		city: '',
 		state: '',
 		zip_code: '',
+		shipping_cost: cart.shipping
 	}
 
 	const validateSchema = Yup.object().shape({

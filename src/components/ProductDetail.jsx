@@ -128,7 +128,7 @@ export const ProductDetail = () => {
 
 					<div className="lg:col-span-3">
 						<div
-							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl"
+							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mt-5 flex justify-center items-center"
 						>
 							<img
 								src={talles}

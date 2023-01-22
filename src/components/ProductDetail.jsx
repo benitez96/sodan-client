@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { add_to_cart } from "../actions/cart"
 import { get_product_by_slug } from "../actions/products"
 import { NotFound } from "./NotFound"
+import talles from '../assets/talles.svg'
 
 export const ProductDetail = () => {
 
@@ -61,7 +62,7 @@ export const ProductDetail = () => {
 							<img
 								alt={product.name}
 								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
-								className="h-72 w-full rounded-xl object-contain lg:h-[540px]"
+								className="object-cover w-full rounded aspect-square h-72 lg:h-[540px]"
 							/>
 						</div>
 
@@ -99,7 +100,7 @@ export const ProductDetail = () => {
 												Object.entries(product.sizes).filter(s => !!s[1]).map(([k, v]) =>
 													<button
 														key={k}
-														className={`uppercase text-sm p-1 ${size == k ? 'bg-teal-600' : ''} px-3 rounded-md border text-gray-700 border-gray-400`}
+														className={`uppercase text-sm p-1 ${size == k ? 'bg-pink-600' : ''} px-3 rounded-md border text-gray-200 border-gray-400`}
 														disabled={!v}
 														onClick={() => handleChangeSize(k)}
 													>
@@ -129,21 +130,15 @@ export const ProductDetail = () => {
 						<div
 							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl"
 						>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem ad
-								labore nostrum, a explicabo iste est dolorem deserunt id ullam magni
-								accusamus saepe, nulla sed sint reiciendis, aperiam cumque officiis!
-							</p>
-
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-								eveniet ipsam mollitia nesciunt illo! Suscipit, corrupti!
-							</p>
+							<img 
+								src={talles} 
+								alt="tabla-talles"
+								className="rounded-md object-cover"
+							/>
 
 						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 	)
 }

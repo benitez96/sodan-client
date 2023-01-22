@@ -33,7 +33,7 @@ export const ProductDetail = () => {
 	}
 
 	const { active: product } = useSelector(state => state.products)
-useEffect(() => {
+	useEffect(() => {
 		dispatch(get_product_by_slug(slug))
 
 	}, [dispatch, slug])
@@ -61,7 +61,7 @@ useEffect(() => {
 							<img
 								alt={product.name}
 								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
-								className="object-contain h-full rounded aspect-square"
+								className="object-contain h-full w-full rounded aspect-square"
 							/>
 						</div>
 

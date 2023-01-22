@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import CartItem from "./CartItem"
 
-import logo from '../assets/logo.jpeg'
+import logo from '../assets/sodan.svg'
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Field, Formik, replace } from "formik"
@@ -294,7 +294,7 @@ export const Checkout = () => {
 											}
 										</div>
 
-										<div className="col-span-6">
+										<div className="col-span-6 mt-2">
 											<button
 												className="block w-full rounded-md bg-black p-2.5 text-sm text-white transition hover:shadow-lg"
 												type="submit"

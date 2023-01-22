@@ -130,8 +130,8 @@ export const ProductDetail = () => {
 						<div
 							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl"
 						>
-							<img 
-								src={talles} 
+							<img
+								src={talles}
 								alt="tabla-talles"
 								className="rounded-md object-cover"
 							/>
@@ -139,6 +139,7 @@ export const ProductDetail = () => {
 						</div>
 					</div>
 				</div>
+			</div>
 		</section>
 	)
 }

@@ -62,7 +62,7 @@ export const ProductDetail = () => {
 							<img
 								alt={product.name}
 								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
-								className="object-cover w-full rounded aspect-square h-72 lg:h-[540px]"
+								className="object-contain h-full rounded aspect-square"
 							/>
 						</div>
 

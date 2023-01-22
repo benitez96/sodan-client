@@ -33,8 +33,7 @@ export const ProductDetail = () => {
 	}
 
 	const { active: product } = useSelector(state => state.products)
-
-	useEffect(() => {
+useEffect(() => {
 		dispatch(get_product_by_slug(slug))
 
 	}, [dispatch, slug])
@@ -58,7 +57,7 @@ export const ProductDetail = () => {
 			<div className="relative mx-auto max-w-screen-xl px-4 py-8">
 				<div className="grid gap-8 lg:grid-cols-4 lg:items-start">
 					<div className="lg:col-span-3">
-						<div className="relative mt-4">
+						<div className="relative mt-4 rounded">
 							<img
 								alt={product.name}
 								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
@@ -100,7 +99,7 @@ export const ProductDetail = () => {
 												Object.entries(product.sizes).filter(s => !!s[1]).map(([k, v]) =>
 													<button
 														key={k}
-														className={`uppercase text-sm p-1 ${size == k ? 'bg-pink-600' : ''} px-3 rounded-md border text-gray-200 border-gray-400`}
+														className={`uppercase text-sm p-1 ${size == k ? 'bg-pink-500' : ''} px-3 rounded-md border text-gray-200 border-gray-300`}
 														disabled={!v}
 														onClick={() => handleChangeSize(k)}
 													>

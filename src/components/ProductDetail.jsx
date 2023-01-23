@@ -61,7 +61,7 @@ export const ProductDetail = () => {
 							<img
 								alt={product.name}
 								src={`${import.meta.env.VITE_IMAGES_SERVER_URL}/${product.images[displayImage]}`}
-								className="object-contain h-full w-full rounded aspect-square"
+								className="object-contain w-full rounded lg:h-[540px]"
 							/>
 						</div>
 
@@ -125,7 +125,7 @@ export const ProductDetail = () => {
 						</div>
 					</div>
 
-					<div className="lg:col-span-3">
+					<div className="col-span-full">
 						<div
 							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mt-12 flex justify-center items-center"
 						>

@@ -46,7 +46,41 @@ export const ProductDetail = () => {
 
 
 	if (!product)
-		return <p>Loading...</p>
+		return (
+			<section>
+
+				<div className="relative mx-auto max-w-screen-xl px-4 py-8 animate-pulse">
+					<div className="grid gap-8 lg:grid-cols-4 lg:items-start">
+						<div className="lg:col-span-3">
+							<div className="flex items-center justify-center w-full h-72 lg:h-[540px] bg-gray-300 rounded"></div>
+						</div>
+
+						<div className="self-center">
+							<h1 className="h-12 bg-gray-300"></h1>
+							<div className="space-y-4 lg:pt-8">
+								<div className="text-2xl h-10 bg-gray-400 w-32 mt-2"></div>
+
+								<div
+									className="w-full rounded bg-pink-400 text-white h-12"
+								>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div className="col-span-full">
+						<div
+							className="prose max-w-none [&>iframe]:mt-6 [&>iframe]:aspect-video [&>iframe]:w-full [&>iframe]:rounded-xl mt-12 flex justify-center items-center"
+						>
+							<div className="flex items-center justify-center w-full h-72 bg-gray-300 rounded"></div>
+
+						</div>
+					</div>
+				</div>
+
+
+			</section>
+		)
 
 	if (product == 'not found')
 		return <NotFound />

@@ -8,6 +8,7 @@ import talles from '../assets/talles.svg'
 
 export const ProductDetail = () => {
 
+	document.documentElement.scrollTop = 0
 	const params = useParams()
 	const { slug } = params
 	const dispatch = useDispatch()

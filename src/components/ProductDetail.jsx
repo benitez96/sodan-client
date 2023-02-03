@@ -8,7 +8,6 @@ import talles from '../assets/talles.svg'
 
 export const ProductDetail = () => {
 
-	document.documentElement.scrollTop = 0
 	const params = useParams()
 	const { slug } = params
 	const dispatch = useDispatch()
@@ -40,10 +39,15 @@ export const ProductDetail = () => {
 	}, [dispatch, slug])
 
 	useEffect(() => {
+
 		if (product?.sizes) {
 			setSize(Object.entries(product.sizes).filter(([_, v]) => !!v)[0][0])
 		}
 	}, [product])
+
+	useEffect(() => {
+		document.documentElement.scrollTop = 0
+	},[])
 
 
 	if (!product)

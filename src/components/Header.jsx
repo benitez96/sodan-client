@@ -24,7 +24,7 @@ export const Header = () => {
 				className={`w-full sticky ${offset > 360 ? '-translate-y-7' : ''} transition duration-500 top-7 z-10 bg-white text-xl font-bold flex justify-center items-center p-3`}
 			>
 
-				<Link to='/'><img src={logo} className='h-16' /><h1 className="hidden">SODAN</h1></Link>
+				<Link to='/'><img src={logo} alt='sodan_logo' className='h-16' /><h1 className="hidden">SODAN</h1></Link>
 
 				<CartButton />
 			</header>

@@ -20,7 +20,7 @@ export const ProductCard = ({ product }) => {
 					{product.name}
 				</h3>
 
-				<p className="mt-1 text-gray-700">${product.price}</p>
+				<p className="mt-1 text-gray-700">{product.price.toLocaleString('es-ar', {style: 'currency', currency: 'ARS'})}</p>
 				{
 					product.sizes
 					&&

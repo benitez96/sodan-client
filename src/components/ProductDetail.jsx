@@ -147,7 +147,7 @@ export const ProductDetail = () => {
 								)
 							}
 							<div>
-								<p className="text-2xl">${product.price}</p>
+								<p className="text-2xl">${product.price.toLocaleString('es-ar', {style: 'currency', currency: 'ARS'})}</p>
 							</div>
 
 							<button
